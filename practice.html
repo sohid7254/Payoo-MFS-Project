@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latest Payment</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- DaisyUI -->
+  <script>
+    tailwind.config = {
+      plugins: [daisyui],
+    }
+  </script>
+</head>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+
+  <div class="w-full max-w-md  shadow rounded-lg p-4">
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="font-semibold text-gray-800">Latest Payment</h2>
+      <a href="#" class="text-sm text-gray-500 hover:text-blue-500">View All</a>
+    </div>
+
+    <!-- Payment Item -->
+    <div class="space-y-3">
+      <!-- Item 1 -->
+      <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg shadow-sm">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 flex items-center justify-center bg-orange-100 rounded-full">
+            🧾
+            </div>
+          <div>
+              <p class="font-medium text-gray-700">Electricity Bill</p>
+              <p class="text-xs text-gray-400">Today 01:44 AM</p>
+          </div>
+        </div>
+        <button class="text-gray-400 hover:text-gray-600">⋮</button>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg shadow-sm">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 flex items-center justify-center bg-green-100 rounded-full">
+            🏦
+          </div>
+          <div>
+            <p class="font-medium text-gray-700">Bank Deposit</p>
+            <p class="text-xs text-gray-400">Today 01:44 AM</p>
+          </div>
+         <div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full">
+            📱
+          </div>
+          <div>
+            <p class="font-medium text-gray-700">Mobile Recharge</p>
+            <p class="text-xs text-gray-400">Today 01:44 AM</p>
+          </div>
+        </div>
+        <button class="text-gray-400 hover:text-gray-600">⋮</button>
+      </div>
+
+       </div>
+        <button class="text-gray-400 hover:text-gray-600">⋮</button>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg shadow-sm">
+        <div class="flex items-center gap-3">
+        -- Item 4 -->
+      <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg shadow-sm">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 flex items-center justify-center bg-red-100 rounded-full">
+            ⛽
+          </div>
+          <div>
+            <p class="font-medium text-gray-700">Gas Bill</p>
+            <p class="text-xs text-gray-400">Today 01:44 AM</p>
+          </div>
+        </div>
+        <button class="text-gray-400 hover:text-gray-600">⋮</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
