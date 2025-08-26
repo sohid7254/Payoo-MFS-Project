@@ -1,4 +1,5 @@
 const validPin = 1234;
+const transectionData = []
 // function to get input value
 function getElementInputValue(id){
     const inputField = document.getElementById(id)
@@ -52,42 +53,45 @@ function handleButtonToggle(id){
 // add money feature
 document.getElementById("btn-addMoney").addEventListener('click',function(e){
     e.preventDefault();
-    
     const bank = getElementByValue("bank");
-
     const accountNumber = getElementByValue("account-number");
-
     const amount = getElementInputValue("amount-toAdd");
-
+    if(amount <= 0){
+        alert("Invalid Amount")
+        return;
+    }
     const pin = getElementInputValue("add-pin");
-    
     const availableBalance = getInnerText("available-balance");
 
     if (accountNumber.length < 11 || accountNumber.length > 15) {
         alert("Please Provide A Valid Acc. Number");
         return;
     }
-
     if(pin != validPin){
         alert("Please provide a valid pin")
         return;
     }
-
     const totalNewAvailableBalance = amount + availableBalance;
-
     setInnerText(totalNewAvailableBalance);
-
+    const data = {
+        name: "Add Money",
+        date: new Date().toLocaleTimeString()
+    }
+    transectionData.push(data)
+    console.log(transectionData);
 })
 
 //Cash out Feature
 document.getElementById("btn-withdraw").addEventListener('click', function (e) {
     e.preventDefault();
     const amount = getElementInputValue("withdraw-amount");
-
     const agentNumber = getElementByValue("agent-number");
     const pin = getElementInputValue("cashout-pin");
-
     const availableBalance = getInnerText("available-balance");
+    if(amount <= 0 || amount > availableBalance){
+        alert("Invalid Amount")
+        return;
+    }
 
     if (agentNumber.length < 11 || agentNumber.length > 15) {
         alert("Please provide a valid Number");
@@ -101,6 +105,12 @@ document.getElementById("btn-withdraw").addEventListener('click', function (e) {
     const totalNewAvailableBalance = availableBalance - amount;
 
     setInnerText(totalNewAvailableBalance);
+    const data = {
+        name: "Cash Out",
+        date: new Date().toLocaleTimeString(),
+    };
+    transectionData.push(data);
+    console.log(transectionData)
 });
 // Transfer Feature
 document.getElementById("btn-transfer").addEventListener('click',function(e){
@@ -119,6 +129,12 @@ document.getElementById("btn-transfer").addEventListener('click',function(e){
     }
     const totalNewAvailableBalance = availableBalance - amount;
     setInnerText(totalNewAvailableBalance);
+    const data = {
+        name: "Tranfer Money",
+        date: new Date().toLocaleTimeString(),
+    };
+    transectionData.push(data);
+    console.log(transectionData);
 })
 // get bonous feature
 document.getElementById("btn-get-bonous").addEventListener('click',function(e){
@@ -144,6 +160,34 @@ document.getElementById("btn-payNow").addEventListener('click',function(e){
 
     const totalNewAvailableBalance = availableBalance - amount;
     setInnerText(totalNewAvailableBalance);
+    const data = {
+        name: "Pay Bill",
+        date: new Date().toLocaleTimeString(),
+    };
+    transectionData.push(data);
+    console.log(transectionData);
+})
+// Transfer Feature
+document.getElementById("transection-button").addEventListener('click', function(){
+    const transectionContainer = document.getElementById("transection-parent");
+    transectionContainer.innerHTML =""
+    for (const data of transectionData){
+        const div = document.createElement("div")
+        div.innerHTML = `<div class="flex justify-between items-center bg-[#ffffff] rounded-xl p-3 shadow-sm mt-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10  flex items-center justify-center bg-[#0808080d] rounded-full">
+                                        <img src="./assets/wallet1.png" alt="">
+                                    </div>
+                                    <div>
+                                        <h2 class="font-semibold">${data.name}</h2>
+                                        <p class="text-xs text-gray-400 font-medium">${data.date}</p>
+                                    </div>
+                                </div>    
+                                <button class="text-xl text-gray-500 hover:text-blue-400 font-bold">⋮</button>
+                        </div>`;
+
+    transectionContainer.appendChild(div);
+    }
 })
 // toggling feature
 
